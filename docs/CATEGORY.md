@@ -3,7 +3,12 @@ Create category for entity for easier management. Category use to group all the 
 See details [here](https://docs.uiza.io/#create-category).
 
 ```golang
-var typeCategory = uiza.FolderType
+import (
+    uiza "github.com/uizaio/api-wrapper-go"
+    "github.com/uizaio/api-wrapper-go/category"
+)
+
+var typeCategory = uiza.CategoryFolderType
 params := &uiza.CategoryCreateParams{
 	Name:        uiza.String(""),
 	Type:        &typeCategory,
@@ -35,6 +40,11 @@ Get detail of category
 See details [here](https://docs.uiza.io/#retrieve-category).
 
 ```golang
+import (
+    uiza "github.com/uizaio/api-wrapper-go"
+    "github.com/uizaio/api-wrapper-go/category"
+)
+
 params := &uiza.CategoryIDParams{ID :uiza.String("Your category ID")}
 response, _ := category.Retrieve(params)
 log.Printf("%s\n", response)
@@ -61,6 +71,11 @@ Example Response
 Get all category
 See details [here](https://docs.uiza.io/#retrieve-category-list).
 ```golang
+import (
+    uiza "github.com/uizaio/api-wrapper-go"
+    "github.com/uizaio/api-wrapper-go/category"
+)
+
 response, _ := category.List()
 for _, v := range response {
     log.Printf("%v\n", v)
@@ -102,7 +117,12 @@ Update information of category
 See details [here](https://docs.uiza.io/#update-category).
 
 ```golang
-var typeCategory = uiza.FolderType
+import (
+    uiza "github.com/uizaio/api-wrapper-go"
+    "github.com/uizaio/api-wrapper-go/category"
+)
+
+var typeCategory = uiza.CategoryFolderType
 params := &uiza.CategoryUpdateParams{
 	ID: uiza.String("Your category ID"),
 	Name: uiza.String(""),
@@ -110,7 +130,7 @@ params := &uiza.CategoryUpdateParams{
 	Description:uiza.String(""),
 	Icon:uiza.String(""),
 	OrderNumber:uiza.Int64(2)}
-response, _ := category.Upddate(params)
+response, _ := category.Update(params)
 log.Printf("%s", response)
 ```
 
@@ -134,6 +154,11 @@ Example Response
 Delete category
 See details [here](https://docs.uiza.io/#delete-category).
 ```golang
+import (
+    uiza "github.com/uizaio/api-wrapper-go"
+    "github.com/uizaio/api-wrapper-go/category"
+)
+
 params := &uiza.CategoryIDParams{ID: uiza.String("Your category ID")}
 response, _ := category.Delete(params)
 log.Printf("%s", response)
@@ -150,6 +175,11 @@ Example Response
 Add relation for entity and category.
 See details [here](https://docs.uiza.io/#create-category-relation).
 ```golang
+import (
+    uiza "github.com/uizaio/api-wrapper-go"
+    "github.com/uizaio/api-wrapper-go/category"
+)
+
 params := &uiza.CategoryRelationParams{
 		EntityId: uiza.String(""),
 		MetadataIds: []*string{uiza.String(""), uiza.String("")}}
@@ -179,6 +209,11 @@ Example Response
 Delete relation for entity and category
 See details [here](https://docs.uiza.io/#delete-category-relation).
 ```golang
+import (
+    uiza "github.com/uizaio/api-wrapper-go"
+    "github.com/uizaio/api-wrapper-go/category"
+)
+
 params := &uiza.CategoryRelationParams{
 		EntityId: uiza.String(""),
 		MetadataIds: []*string{uiza.String(""), uiza.String("")}}

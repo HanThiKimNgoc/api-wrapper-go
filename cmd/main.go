@@ -2,13 +2,22 @@ package main
 
 import (
 	uiza "github.com/uizaio/api-wrapper-go"
-	"github.com/uizaio/api-wrapper-go/entity"
+	"github.com/uizaio/api-wrapper-go/category"
 	_ "github.com/uizaio/api-wrapper-go/testing"
 	"log"
 )
 
 func main() {
-	params := &uiza.EntityRetrieveParams{ID: uiza.String("")}
-	response, _ := entity.Retrieve(params)
-	log.Printf("%s\n", response)
+
+	var typeCategory = uiza.CategoryFolderType
+	params := &uiza.CategoryUpdateParams{
+		ID:          uiza.String("Your category ID"),
+		Name:        uiza.String(""),
+		Type:        &typeCategory,
+		Description: uiza.String(""),
+		Icon:        uiza.String(""),
+		OrderNumber: uiza.Int64(2)}
+	response, _ := category.Update(params)
+	log.Printf("%s", response)
+
 }
